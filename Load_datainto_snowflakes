@@ -1,0 +1,61 @@
+use MYIMDB.public;
+
+CREATE OR REPLACE FILE FORMAT mycsvformat
+
+ TYPE = 'CSV'
+
+ FIELD_DELIMITER = ','
+create stage my_s3_staging
+  storage_integration = s3_int
+  url = 's3://imdb-wapstra/tables/'
+  file_format = mycsvformat;
+
+
+copy into AKA_NAME
+from @my_s3_stage/aka_name.csv;
+
+copy into AKA_TITLE
+from @my_s3_stage/aka_title.csv;
+copy into CAST_INFO
+from @my_s3_stage/cast_info.csv;
+copy into CHAR_NAME
+from @my_s3_stage/char_name.csv;
+copy into COMPANY_NAME
+from @my_s3_stage/company_name.csv;
+copy into COMPANY_TYPE
+from @my_s3_stage/company_type.csv;
+copy into COMPLETE_CAST
+from @my_s3_stage/complete_cast.csv;
+copy into COMP_CAST_TYPE
+from @my_s3_stage/comp_cast_type.csv;
+copy into INFO_TYPE
+from @my_s3_stage/info_type.csv;
+copy into KEYWORD
+from @my_s3_stage/keyword.csv;
+copy into KIND_TYPE
+from @my_s3_stage/kind_type.csv;
+copy into LINK_TYPE
+from @my_s3_stage/link_type.csv;
+copy into MOVIE_COMPANIES
+from @my_s3_stage/movie_companies.csv;
+copy into MOVIE_INFO
+from @my_s3_stage/movie_info.csv;
+copy into MOVIE_INFO_IDX
+from @my_s3_stage/movie_info_idx.csv;
+copy into MOVIE_KEYWORD
+from @my_s3_stage/movie_keyword.csv;
+copy into MOVIE_LINK
+from @my_s3_stage/movie_link.csv;
+copy into NAME
+from @my_s3_stage/name.csv;
+copy into PERSON_INFO
+from @my_s3_stage/person_info.csv;
+copy into ROLE_TYPE
+from @my_s3_stage/role_type.csv;
+copy into TITLE
+from @my_s3_stage/title.csv;
+
+
+
+
+

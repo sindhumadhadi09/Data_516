@@ -1,0 +1,10 @@
+create storage integration s3_int
+  type = external_stage
+  storage_provider = s3
+  enabled = true
+  storage_aws_role_arn = 'arn:aws:iam::101150409479:role/IMDBRedshiftRole'
+  storage_allowed_locations = ('s3://imdb-wapstra/tables/');
+ 
+ 
+DESC INTEGRATION s3_int;
+
